@@ -30,12 +30,14 @@ class Game:
             if self.play_turn() == 0:
                 print(f"it's {self.players[0].name} turn your symbole ({self.players[0].symbole}):")
                 choice = int(input("enter a position: "))
-                self.board.update_board(choice, self.players[0].symbole)
+                while self.board.update_board(choice, self.players[0].symbole) == False:
+                    choice = int(input("enter a valid position: "))
                 self.current_index = 0
             else:
                 print(f"it's {self.players[1].name} turn your symbole ({self.players[1].symbole}):")
                 choice = int(input("enter a position: "))
-                self.board.update_board(choice, self.players[1].symbole)
+                while self.board.update_board(choice, self.players[1].symbole) == False:
+                    choice = int(input("enter a valid position: "))
                 self.current_index = 1
         if self.no_draw() == False:
             self.board.display_board()
@@ -88,8 +90,6 @@ class Game:
             return True
         else:
             return False
-
-
 
     def no_draw(self):
         k = 0
