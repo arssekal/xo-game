@@ -24,3 +24,6 @@ class Board:
             self.board.insert(i-1,i)
     def is_valid_move(self,choice,symbole):
         return  (choice in self.board and self.board[choice-1] != symbole)
+    def gain_board(self,row):
+        for i in row:
+            self.board.insert(i,'*')
